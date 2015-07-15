@@ -10,10 +10,11 @@ namespace Reto1
     {
         static void Main(string[] args)
         {
+            int end = 0;
             int tamaño = 0;
-            string rango = "";
-            Console.WriteLine("¿Que variable deseas investigar?, ingresa el numero que le corresponda");
-            string variable;
+            string rango = "";            
+            string variable = "";
+            Console.WriteLine("LISTA DE DATOS");
             Console.WriteLine(" ");
             Console.WriteLine("1: Byte");
             Console.WriteLine("2: SByte");
@@ -32,9 +33,16 @@ namespace Reto1
             Console.WriteLine("15: Decimal");
             Console.WriteLine("");
 
-            variable = Console.ReadLine();
-            switch (variable)
-                {
+            Console.WriteLine("¿Que variable deseas investigar?, ingresa el numero que le corresponda.");
+            Console.WriteLine("Esribe 'END' y presiona enter para finalizar el programa.");
+            Console.WriteLine("");
+
+                        
+            do
+            {                   
+                variable = Console.ReadLine();
+                switch (variable)
+                {                    
                     case "1":
                         {
                             tamaño = 8;
@@ -125,19 +133,43 @@ namespace Reto1
                             rango = "±1.0 × 10e−28 a ±7.9 × 10e28";
                         }
                         break;
-
+                    case "END":
+                        {                         
+                        }
+                        break;
                     default:
-                        { Console.WriteLine("ERROR"); }
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine("ERROR");
+                            tamaño = 0;
+                            rango = "0";
+                        }
                         break;
                 }
 
-            Console.WriteLine("", tamaño);
-            Console.WriteLine("El tamaño en bits de la variable es de: {0}", tamaño);
-            Console.WriteLine("El rango de la variable es de: {0}", rango);
-            Console.WriteLine("");
-            Console.WriteLine("Fin del programa");
+                if (variable == "END")
+                {
+                    end = 1;
+                    Console.WriteLine("Final del programa");
+                }
 
+                else
+                {
+
+                    Console.WriteLine("");
+                    Console.WriteLine("El tamaño en bits de la variable es de: {0}", tamaño);
+                    Console.WriteLine("El rango de la variable es de: {0}", rango);
+                    Console.WriteLine("");
+                    Console.WriteLine("¿Que variable deseas investigar?, ingresa el numero que le corresponda.");
+                    Console.WriteLine("Esribe 'END' y presiona enter para finalizar el programa.");
+                    Console.WriteLine("");
+                }
+                
+            }
+            while (end == 0);
+                        
         }
-        
+
+     
     }
 }
